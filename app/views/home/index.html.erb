@@ -2,9 +2,17 @@
   <span class="font-bold text-lg">
     Rankrec
   </span>
-  <button class="px-6 py-2 bg-white text-black rounded-lg">
-    Login
-  </button>
+  <% if @user %>
+    <%= button_to 'Logout', '/auth/logout',
+                  method: :get,
+                  data: {turbo: false},
+                  class: "px-6 py-2 bg-white text-black rounded-lg cursor-pointer hover:bg-gray-400 transition"%>
+  <% else %>
+    <%= button_to 'Login', '/auth/auth0',
+                  method: :post,
+                  data: {turbo: false},
+                  class: "px-6 py-2 bg-white text-black rounded-lg cursor-pointer hover:bg-gray-400 transition"%>
+  <% end %>
 </nav>
 <div class="mt-20 px-6 py-6">
   <div class="mb-6">
