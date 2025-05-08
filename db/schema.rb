@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_07_033708) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_08_185757) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -29,5 +29,25 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_07_033708) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.decimal "score", precision: 3, scale: 1
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "album_id", null: false
+    t.index ["album_id"], name: "index_ratings_on_album_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+    t.check_constraint "score >= 0.0 AND score <= 10.0", name: "ratingsscorerangecheck"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.text "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "albums", "artists"
+  add_foreign_key "ratings", "albums"
+  add_foreign_key "ratings", "users"
 end
