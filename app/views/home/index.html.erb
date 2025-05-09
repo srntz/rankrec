@@ -1,20 +1,5 @@
-<nav class="fixed bg-[#161616] w-full h-20 flex items-center justify-between px-6">
-  <span class="font-bold text-lg">
-    Rankrec
-  </span>
-  <% if @user %>
-    <%= button_to 'Logout', '/auth/logout',
-                  method: :get,
-                  data: {turbo: false},
-                  class: "px-6 py-2 bg-white text-black rounded-lg cursor-pointer hover:bg-gray-400 transition"%>
-  <% else %>
-    <%= button_to 'Login', '/auth/auth0',
-                  method: :post,
-                  data: {turbo: false},
-                  class: "px-6 py-2 bg-white text-black rounded-lg cursor-pointer hover:bg-gray-400 transition"%>
-  <% end %>
-</nav>
-<div class="mt-20 px-6 py-6">
+<%= render partial: "shared/header_default" %>
+<div class="mt-10 px-6 py-6">
   <div class="mb-6">
     <h1 class="text-[3.5rem]">Welcome to <i>Rankrec</i>!</h1>
     <p class="text-lg" >Personal album statistics. Easy and reliable.</p>
@@ -25,7 +10,7 @@
       <%= render_navbutton("My Rankings", "/", :get) %>
     </li>
     <li>
-      <%= render_navbutton("Albums", "/", :get) %>
+      <%= render_navbutton("Albums", "/albums", :get) %>
     </li>
   </ul>
 </div>

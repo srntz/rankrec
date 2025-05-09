@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "albums/index"
+  get "album/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -11,6 +13,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+
+  get '/albums' => 'albums#index'
+  get '/albums/load' => 'albums#load_data', as: "albums_load_data"
+
   get '/auth/auth0/callback' => 'auth0#callback'
   get '/auth/failure' => 'auth0#failure'
   get '/auth/logout' => 'auth0#logout'

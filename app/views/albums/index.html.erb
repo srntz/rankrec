@@ -1,0 +1,5 @@
+<%= render partial: "shared/header_default" %>
+<div>
+  <%= turbo_frame_tag :lazy_albums, src: albums_load_data_path, loading: :lazy do %>
+  <% end %>
+</div>

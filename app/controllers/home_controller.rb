@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
+  include WithAuthenticatedUser
   def index
-    @user = session[:userinfo]
   end
 end

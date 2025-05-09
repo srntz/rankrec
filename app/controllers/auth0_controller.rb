@@ -3,7 +3,7 @@ class Auth0Controller < ApplicationController
     auth_info = request.env["omniauth.auth"]
     raw_info = auth_info["extra"]["raw_info"]
     session[:userinfo] = raw_info
-    User.create(username: raw_info["nickname"], auth0_sub: raw_info["sub"]) unless User.exists?(auth0_sub: raw_info["sub"])
+    User.create(username: raw_info["nickname"], auth0_sub: raw_info["sub"], role: :user) unless User.exists?(auth0_sub: raw_info["sub"])
     redirect_to "/"
   end
 

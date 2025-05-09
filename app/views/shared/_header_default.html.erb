@@ -1,0 +1,19 @@
+<nav class="sticky bg-[#161616] w-full h-20 flex items-center justify-between px-6">
+    <span class="font-bold text-lg">
+      Rankrec
+    </span>
+  <% if @user %>
+    <div class="flex gap-10 items-center">
+      <span>Hi, <i><%= @user.username %></i>!</span>
+      <%= button_to 'Logout', '/auth/logout',
+                    method: :get,
+                    data: {turbo: false},
+                    class: "px-4 py-2 bg-white text-black rounded-lg cursor-pointer hover:bg-gray-400 transition"%>
+    </div>
+  <% else %>
+    <%= button_to 'Login', '/auth/auth0',
+                  method: :post,
+                  data: {turbo: false},
+                  class: "px-6 py-2 bg-white text-black rounded-lg cursor-pointer hover:bg-gray-400 transition"%>
+  <% end %>
+</nav>

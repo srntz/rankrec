@@ -1,0 +1,5 @@
+<%= turbo_frame_tag :lazy_albums do %>
+  <% @albums.each do |album| %>
+    <p><%= album.title %></p>
+  <% end %>
+<% end %>
