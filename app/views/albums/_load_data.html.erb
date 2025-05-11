@@ -1,0 +1,14 @@
+<%= turbo_frame_tag :lazy_albums do %>
+  <div class="w-full grid grid-cols-4 gap-10">
+    <% if albums == nil || albums.length == 0 %>
+      <p>No albums were found :(</p>
+    <% else %>
+      <% albums.each do |album| %>
+        <div class="w-auto p-6 h-[20rem] bg-[#303030] flex flex-col gap-2 font-bold rounded-xl cursor-pointer">
+          <p><%= album.title %></p>
+          <p><%= album.artist.name %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get '/albums' => 'albums#index'
   get '/albums/load' => 'albums#load_data', as: "albums_load_data"
+  get 'albums/search' => 'albums#search', as: "albums_search"
 
   get '/auth/auth0/callback' => 'auth0#callback'
   get '/auth/failure' => 'auth0#failure'

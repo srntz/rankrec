@@ -81,9 +81,11 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: rankrec_production
-    username: rankrec
-    password: <%= ENV["RANKREC_DATABASE_PASSWORD"] %>
+    database: rankrec_db
+    username: postgres
+    password: password
+    host: localhost
+    port: 5550
   cache:
     <<: *primary_production
     database: rankrec_production_cache

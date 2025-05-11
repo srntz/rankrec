@@ -1,5 +1,11 @@
 <%= render partial: "shared/header_default" %>
-<div>
+<div class="px-16 flex flex-col gap-6">
+  <%= form_with url: albums_search_path, method: :get, data: { turbo_frame: :lazy_albums }, class: "w-full grid grid-cols-4 gap-10" do %>
+    <%= text_field_tag :album_title, params[:album_title], placeholder: "Search...", class: "bg-[#303030] rounded-lg p-2 col-start-1 col-end-3"%>
+  <% end %>
+
   <%= turbo_frame_tag :lazy_albums, src: albums_load_data_path, loading: :lazy do %>
+    <p>Loading...</p>
   <% end %>
 </div>
+
